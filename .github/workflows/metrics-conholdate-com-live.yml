@@ -6,8 +6,8 @@ name: metrics.conholdate.com-live
 on:
   workflow_dispatch:  
   # Scheduled trigger
-  #schedule:
-   # - cron: '59 */11 * * *'
+  schedule:
+    - cron: '59 */11 * * *'
   
     # Triggers the workflow on push or pull request events but only for the master branch
   push:

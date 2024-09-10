@@ -6,8 +6,8 @@ name: metrics.conholdate.com-qa
 on:
   workflow_dispatch:  
   # Scheduled trigger
-  #schedule:
-   # - cron: '50 */11 * * *'
+  schedule:
+    - cron: '50 */11 * * *'
   
   push:
     branches: [ main ]
