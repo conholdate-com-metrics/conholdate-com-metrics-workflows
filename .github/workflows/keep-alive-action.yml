@@ -2,7 +2,6 @@ name: Keep Alive Commit
 
 on:
   workflow_dispatch:
-  # Scheduled trigger
   schedule:
     - cron: '0 0 */15 * *'  # Runs every 15 days
 
@@ -10,14 +9,14 @@ jobs:
   keepalive:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3        
-         with:
-            repository: conholdate-com-metrics/conholdate-com-metrics-workflows
-            token: ${{ secrets.REPO_TOKEN }}
-            
-      - name: Update timestamp to keep repo active
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.REPO_TOKEN }}  # Must be a PAT with push access
+
+      - name: Keep repository alive with timestamp update
         run: |
+          echo "Running keep-alive job..."
           date > keepalive.txt
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
