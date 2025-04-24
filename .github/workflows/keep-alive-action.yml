@@ -12,7 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3        
-        
+         with:
+            repository: conholdate-com-metrics/conholdate-com-metrics-workflows
+            token: ${{ secrets.GH_PAT }}
+            
       - name: Update timestamp to keep repo active
         run: |
           date > keepalive.txt
