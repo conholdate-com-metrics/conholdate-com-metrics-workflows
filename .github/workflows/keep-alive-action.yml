@@ -1,0 +1,23 @@
+name: Keep Alive Commit
+
+on:
+  workflow_dispatch:
+  # Scheduled trigger
+  schedule:
+    - cron: '0 0 */15 * *'  # Runs every 15 days
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update timestamp to keep repo active
+        run: |
+          date > keepalive.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add keepalive.txt
+          git commit -m "Keep-alive commit" || echo "No changes to commit"
+          git push
