@@ -11,8 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with: token: ${{ secrets.REPO_TOKEN }}
+        uses: actions/checkout@v3        
         
       - name: Update timestamp to keep repo active
         run: |
